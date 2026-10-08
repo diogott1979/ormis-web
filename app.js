@@ -36,3 +36,13 @@ async function execute(simular){
 }
 $('simular').addEventListener('click',()=>execute(true));
 $('gravar').addEventListener('click',()=>execute(false));
+// =========================================================
+// RECEBER AUTOMATICAMENTE O NÚMERO ORMIS DO EXPERIENCE BUILDER
+// =========================================================
+
+const parametros = new URLSearchParams(window.location.search);
+const numeroURL = parametros.get("ormis");
+
+if (numeroURL && /^\d+$/.test(numeroURL.trim())) {
+    document.getElementById("numero").value = numeroURL.trim();
+}
