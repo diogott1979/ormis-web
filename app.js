@@ -40,9 +40,24 @@ $('gravar').addEventListener('click',()=>execute(false));
 // RECEBER AUTOMATICAMENTE O NÚMERO ORMIS DO EXPERIENCE BUILDER
 // =========================================================
 
-const parametros = new URLSearchParams(window.location.search);
-const numeroURL = parametros.get("ormis");
+// RECEBER O NÚMERO ORMIS DO URL
 
-if (numeroURL && /^\d+$/.test(numeroURL.trim())) {
-    document.getElementById("numero").value = numeroURL.trim();
+function carregarNumeroORMIS() {
+    const parametros = new URLSearchParams(window.location.search);
+    const numero = parametros.get("ormis");
+
+    if (numero && /^\d+$/.test(numero.trim())) {
+        const campo = document.getElementById("numero");
+
+        if (campo) {
+            campo.value = numero.trim();
+            campo.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+    }
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", carregarNumeroORMIS);
+} else {
+    carregarNumeroORMIS();
 }
