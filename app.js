@@ -36,6 +36,8 @@ async function execute(simular){
 }
 $('simular').addEventListener('click',()=>execute(true));
 $('gravar').addEventListener('click',()=>execute(false));
+
+
 // =========================================================
 // RECEBER AUTOMATICAMENTE O NÚMERO ORMIS DO EXPERIENCE BUILDER
 // =========================================================
